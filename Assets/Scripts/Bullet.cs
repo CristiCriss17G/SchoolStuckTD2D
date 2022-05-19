@@ -23,16 +23,17 @@ public class Bullet : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        transform.position = Vector2.MoveTowards(transform.position, target.position, bulletSpeed * Time.deltaTime);
+    {
+        if (target != null)
+            transform.position = Vector2.MoveTowards(transform.position, target.position, bulletSpeed * Time.deltaTime);
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            /*other.gameObject.GetComponent<Enemy>().TakeDamage(demageAmount);*/
+            other.gameObject.GetComponent<Enemy>().TakeDamage(demageAmount);
             Destroy(gameObject);
         }
     }
