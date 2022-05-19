@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2185666517450253516}
   - component: {fileID: 239406234141397656}
   - component: {fileID: -5056545516302535796}
-  m_Layer: 2
+  - component: {fileID: 2121324778316919140}
+  m_Layer: 0
   m_Name: Elev1
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,5 +122,22 @@ MonoBehaviour:
   target: {fileID: 0}
   fireRate: 1
   range: 1
+  cost: 5
   enemyTag: Enemy
   bulletPrefab: {fileID: 182374978800516678, guid: 18641a8324ff0294cad2f6bccecf61ae, type: 3}
+--- !u!70 &2121324778316919140
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9156664214795506860}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.005520662, y: -0.0030670564}
+  m_Size: {x: 0.08025646, y: 0.23497844}
+  m_Direction: 0

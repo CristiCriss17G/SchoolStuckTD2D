@@ -10,11 +10,20 @@ public class Turret : MonoBehaviour
     public float fireRate = 1f;
     private float fireCountdown = 0f;
     public float range = 1f;
+    public int cost = 5;
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
 
     public GameObject bulletPrefab;
+
+    public int Cost
+    {
+        get
+        {
+            return cost;
+        }
+    }
 
 
     // Start is called before the first frame update
@@ -63,8 +72,11 @@ public class Turret : MonoBehaviour
 
         if (fireCountdown <= 0f)
         {
-            Shoot();
-            fireCountdown = 1f / fireRate;
+            if (Physics2D.Linecast(transform.position, target.position, 1 << LayerMask.NameToLayer("Default")).collider.tag.CompareTo("Enemy") == 0)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
         }
 
         fireCountdown -= Time.deltaTime;
