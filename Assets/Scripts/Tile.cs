@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
         /*transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.1f);
         rend.material.color = hoverColor;*/
         rend.enabled = true;
-        Debug.Log("Mouse Hover");
+        /*Debug.Log("Mouse Hover");*/
     }
 
     void OnMouseExit()
@@ -38,7 +38,7 @@ public class Tile : MonoBehaviour
         /*transform.position = new Vector3(transform.position.x, transform.position.y, startZ);
         rend.material.color = startColor;*/
         rend.enabled = false;
-        Debug.Log("Mouse Exit");
+        /*Debug.Log("Mouse Exit");*/
     }
 
     void OnMouseDown()
@@ -55,6 +55,9 @@ public class Tile : MonoBehaviour
         {
             Score.coins -= turretToBuild.GetComponent<Turret>().Cost;
             turret = Instantiate(turretToBuild, transform.position + spawnOffset, transform.rotation);
+            BuildManager.turretIndex++;
+            if (BuildManager.turretIndex > 0 && BuildManager.turretIndex % 5 == 0)
+                turretToBuild.GetComponent<Turret>().Cost++;
         }
         else
         {

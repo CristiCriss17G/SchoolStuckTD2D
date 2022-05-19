@@ -7,6 +7,14 @@ public class Enemy : MonoBehaviour
     public int health;
     public int maxHealth = 100;
 
+    private int damage = 1;
+
+    public int Damage
+    {
+        get { return damage; }
+        /*set { damage = value; }*/
+    }
+
     // Start is called before the first frame update
     void Start()
     {

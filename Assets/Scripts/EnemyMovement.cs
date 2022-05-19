@@ -35,6 +35,7 @@ public class EnemyMovement : MonoBehaviour
         if (target == endPoint)
         {
             Destroy(gameObject);
+            Health.LoseLife(GetComponent<Enemy>().Damage);
             return;
         }
         if (wavepointIndex >= Waypoints.points.Length - 1)

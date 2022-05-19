@@ -10,7 +10,10 @@ public class Turret : MonoBehaviour
     public float fireRate = 1f;
     private float fireCountdown = 0f;
     public float range = 1f;
-    public int cost = 5;
+    public int baseCost = 5;
+
+    [SerializeField]
+    private int cost;
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
@@ -23,12 +26,22 @@ public class Turret : MonoBehaviour
         {
             return cost;
         }
+
+        set
+        {
+            cost = value;
+        }
     }
 
+    void Awake()
+    {
+        Cost = baseCost;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        cost = baseCost;
         InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
     }
 
