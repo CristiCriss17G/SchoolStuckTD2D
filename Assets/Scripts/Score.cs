@@ -17,30 +17,33 @@ public class Score : MonoBehaviour
 
     private float fontSize;
 
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI enemiesKilledText;
 
     void Start()
     {
         coins = startCoins;
-        fontSize = scoreText.fontSize;
+        fontSize = coinsText.fontSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Coins: " + coins;
+        coinsText.text = "Coins: " + coins;
+        if(GetComponent<WaveSpanner>().bossLevel)
+            enemiesKilledText.text = "Score: " + enemiesKilled;
     }
 
     public void Pulse()
     {
-        scoreText.color = Color.red;
-        scoreText.fontSize = textSizeToPulse;
+        coinsText.color = Color.red;
+        coinsText.fontSize = textSizeToPulse;
         Invoke(nameof(ResetButton), textSpeed);
     }
 
     void ResetButton()
     {
-        scoreText.color = Color.white;
-        scoreText.fontSize = fontSize;
+        coinsText.color = Color.white;
+        coinsText.fontSize = fontSize;
     }
 }

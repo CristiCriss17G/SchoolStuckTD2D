@@ -19,6 +19,7 @@ public class BuildManager : MonoBehaviour
 
     public GameObject[] standardTurretPrefabs;
     public static int turretIndex = 0;
+    public int turretCost;
 
     private GameObject turretToBuild;
 
@@ -37,8 +38,10 @@ public class BuildManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var turret in standardTurretPrefabs)
-            turret.GetComponent<Turret>().Cost = turret.GetComponent<Turret>().baseCost;
+        /*foreach (var turret in standardTurretPrefabs)
+            turret.GetComponent<Turret>().Cost = turret.GetComponent<Turret>().baseCost;*/
+
+        turretCost = standardTurretPrefabs[turretIndex].GetComponent<Turret>().Cost;
 
         turretIndex = 0;
         int turretToChooseIndex = Random.Range(0, standardTurretPrefabs.Length);
@@ -59,8 +62,6 @@ public class BuildManager : MonoBehaviour
             timeToRandomize -= Time.deltaTime;
         }
 
-        turretsCost.text = "";
-        foreach (var turret in standardTurretPrefabs)
-            turretsCost.text += "Turret " + turret.name + " costs: " + turret.GetComponent<Turret>().Cost + "\n";
+        turretsCost.text = "Turret cost: " + turretCost;
     }
 }

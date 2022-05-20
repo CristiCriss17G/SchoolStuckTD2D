@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         if (lives <= 0)
         {
             lives = 0;
-            GetComponent<GameOver>().GameOverLose();
+            StartCoroutine(GetComponent<GameOver>().GameOverLose());
         }
     }
     public static void LoseLife(int amount = 1)

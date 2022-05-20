@@ -15,6 +15,9 @@ public class Tile : MonoBehaviour
 
     public GameObject gameMaster;
 
+    public AudioSource placeSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,13 +54,14 @@ public class Tile : MonoBehaviour
 
 
         GameObject turretToBuild = BuildManager.instance.TurretToBuild;
-        if (Score.coins >= turretToBuild.GetComponent<Turret>().Cost)
+        if (Score.coins >= BuildManager.instance.turretCost)
         {
-            Score.coins -= turretToBuild.GetComponent<Turret>().Cost;
+            Score.coins -= BuildManager.instance.turretCost;
             turret = Instantiate(turretToBuild, transform.position + spawnOffset, transform.rotation);
+            placeSound.Play();
             BuildManager.turretIndex++;
-            if (BuildManager.turretIndex > 0 && BuildManager.turretIndex % 5 == 0)
-                turretToBuild.GetComponent<Turret>().Cost++;
+            if (BuildManager.turretIndex > 0 && BuildManager.turretIndex % 7 == 0)
+                BuildManager.instance.turretCost++;
         }
         else
         {

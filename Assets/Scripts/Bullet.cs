@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public AudioSource shootSound;
+
     public int demageAmount = 40;
     public float bulletSpeed = 5f;
 

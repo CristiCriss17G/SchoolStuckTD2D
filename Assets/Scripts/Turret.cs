@@ -106,6 +106,7 @@ public class Turret : MonoBehaviour
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
         /*bulletGO.transform.position = transform.position;*/
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bulletGO.GetComponent<Bullet>().shootSound.Play();
 
         if (bullet != null)
             bullet.Target = target;
